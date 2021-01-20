@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  const [state, setState] = useState({})
+  useEffect(()=>{
+    (async()=>{let response = await fetch("http://localhost:3000/uxcandy.com/~shapoval/test-task-backend/v2/?developer=Salman", {
+      method: 'GET',
+      credentials: 'include',
+    })
+    const result = await response.json();
+    setState(result)
+  })()
+},[])
+console.log(state);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App"> dsvasdva
+  {state &&(state.message&&(state.message.tasks && state.message.tasks.map(e=><h1>{e.username}</h1>)))}
     </div>
   );
 }
