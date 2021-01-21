@@ -1,6 +1,8 @@
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import TaskList from "./models/taskList.js";
+import TotalTaskCount from "./models/totalTasksCount.js";
+
 
 dotenv.config();
 
@@ -26,9 +28,15 @@ const taskList = [{
   status: 12,
 },
 {
-  username: "Salman",
-  email: "salman@mail.ru",
-  text: "qwertyuiophgfdvfgvbnm",
+  username: "Osman",
+  email: "osman@mail.ru",
+  text: "gafggfshjyhtsrymhnbftnbgfs",
+  status: 12,
+},
+{
+  username: "Maga",
+  email: "maga@mail.ru",
+  text: "asdgfdagfdgafgdgadgfg",
   status: 12,
 }];
 
@@ -36,7 +44,11 @@ TaskList.insertMany(taskList).then(() => {
   mongoose.connection.close();
 });
 
-// const d = new TaskList(taskList);
-// d.save().then(() => {
-//   mongoose.connection.close();
-// });
+const totalTaskCount = {
+  totalTaskCount: 1,
+}
+
+const d = new TotalTaskCount(totalTaskCount);
+d.save().then(() => {
+  mongoose.connection.close();
+});

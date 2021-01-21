@@ -3,6 +3,8 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import taskList from "./src/routes/taskList.js";
+import createTaskList from "./src/routes/createTaskList.js";
+
 
 dotenv.config();
 
@@ -35,6 +37,8 @@ const host = app.use(
 // Подключение middleware, который парсит JSON от клиента
 app.use(express.json());
 app.use("/uxcandy.com/~shapoval/test-task-backend/v2", taskList);
+app.use("/uxcandy.com/~shapoval/test-task-backend/v2", createTaskList);
+
 app.listen(PORT, () => {
   console.log("Server has been started on port ", PORT);
 });
